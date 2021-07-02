@@ -13,27 +13,27 @@ class KegControl extends React.Component {
 
   // The function to handle 'Add Keg' button click, below
   handleClick = () => {
-    this.setState({formVisibleOnPage: true});
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
   }
 
   render(){
     let currentlyVisibleState = null;
-    let addKegButton = null;
+    let buttonText = null;
 
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm />
+      buttonText = "Return to Keg List";
     } else {
       currentlyVisibleState = <KegList />
-      addKegButton = <button onClick={this.handleClick}>Add Keg</button>
-      // This doesn't render the button -- it gives it a value so it WILL render
-      // (i.e., so the value won't be 'null')
-      // That value is the HTML code for a button! One with the function, above
+      buttonText = "Add Keg";
     }
 
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        {addKegButton}{/* Actually renders the button */}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
