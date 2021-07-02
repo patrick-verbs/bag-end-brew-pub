@@ -7,7 +7,7 @@ function KegList(){
       name="The Green Dragon"
       brand="Against the Grain"
       price="5.00"
-      alcoholContent="12.5%"
+      alcoholContent="12.5"
     />
   );
 }
