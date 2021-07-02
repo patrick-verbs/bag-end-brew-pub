@@ -3,7 +3,12 @@ import Keg from "./Keg";
 
 function KegList(){
   return (
-    <Keg />
+    <Keg
+      name="The Green Dragon"
+      brand="Against the Grain"
+      price="5.00"
+      alcoholContent="12.5%"
+    />
   );
 }
 
