@@ -11,7 +11,8 @@ class KegControl extends React.Component {
       formVisibleOnPage: false,
       masterKegList: [],
       // ^ will be passed down as a prop to KegList in the render() else-branch
-      selectedKeg: null
+      selectedKeg: null,
+      editing: false
     };
   }
 
@@ -42,6 +43,11 @@ class KegControl extends React.Component {
     });
   }
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached :P");
+    this.setState({editing: true});
+  }
+
   handleDeletingKeg = (id) => {
     const newMasterKegList = this.state.masterKegList.filter(ticket => ticket.id !== id);
     this.setState({
@@ -57,6 +63,7 @@ class KegControl extends React.Component {
     if (this.state.selectedKeg != null) {
       currentlyVisibleState = <KegDetail
         keg = {this.state.selectedKeg}
+        onClickingEdit = {this.handleEditClick}
         onClickingDelete = {this.handleDeletingKeg}
       />;
       buttonText = "Return to Keg List";
