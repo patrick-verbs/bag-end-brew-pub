@@ -62,7 +62,15 @@ class KegControl extends React.Component {
   }
 
   handleDeletingKeg = (id) => {
-    const newMasterKegList = this.state.masterKegList.filter(ticket => ticket.id !== id);
+    const newMasterKegList = this.state.masterKegList.filter(keg => keg.id !== id);
+    this.setState({
+      masterKegList: newMasterKegList,
+      selectedKeg: null
+    });
+  }
+
+  handleSellingKeg = (id) => {
+    const newMasterKegList = this.state.masterKegList.filter(keg => keg.id !== id);
     this.setState({
       masterKegList: newMasterKegList,
       selectedKeg: null
@@ -84,6 +92,7 @@ class KegControl extends React.Component {
         keg = {this.state.selectedKeg}
         onClickingEdit = {this.handleEditClick}
         onClickingDelete = {this.handleDeletingKeg}
+        onClickingSell = {this.handleSellingKeg}
       />;
       buttonText = "Return to Keg List";
     }

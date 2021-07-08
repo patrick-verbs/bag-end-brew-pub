@@ -17,6 +17,7 @@ function EditKegForm(props) {
       brand: event.target.brand.value,
       price: event.target.price.value,
       alcoholContent: event.target.alcoholContent.value,
+      pintsLeft: event.target.pintsLeft.value,
       id: keg.id
     });
   }
