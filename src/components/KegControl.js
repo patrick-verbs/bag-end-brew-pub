@@ -70,11 +70,21 @@ class KegControl extends React.Component {
   }
 
   handleSellingKeg = (id) => {
-    const newMasterKegList = this.state.masterKegList.filter(keg => keg.id !== id);
-    this.setState({
-      masterKegList: newMasterKegList,
-      selectedKeg: null
-    });
+    const selectedKeg = this.state.masterKegList.filter(keg => keg.id !== id)[0];
+    if (selectedKeg.pintsLeft > 0) {
+      selectedKeg.pintsLeft -= 1;
+      this.setState({
+        selectedKeg: selectedKeg
+      });
+    }
+    // const editedMasterKegList = this.state.masterKegList
+    //   .filter(keg => keg.id !== this.state.selectedKeg.id)
+    //   .concat(kegToEdit);
+    // this.setState({
+    //   masterKegList: editedMasterKegList,
+    //   editing: false,
+    //   selectedKeg: null
+    // });
   }
 
   render(){
